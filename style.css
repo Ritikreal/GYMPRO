@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0b0b0b;
+  color: white;
+}
+
+.app {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #1f1f1f;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.tab {
+  display: none;
+}
+
+.tab.active {
+  display: block;
+}
+
+.card {
+  background: #1a1a1a;
+  padding: 15px;
+  border-radius: 14px;
+  margin-bottom: 15px;
+  animation: fadeIn 0.3s ease;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+button {
+  padding: 12px;
+  background: #00e676;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  font-weight: bold;
+}
+
+.workout {
+  background: #222;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  animation: slideUp 0.3s ease;
+}
+
+.stats {
+  margin-top: 10px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes slideUp {
+  from {transform: translateY(10px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
+}
