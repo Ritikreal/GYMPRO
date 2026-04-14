@@ -34,7 +34,7 @@ function addWorkout() {
 function clearInputs() {
   document.getElementById("exercise").value = "";
   document.getElementById("reps").value = "";
-  document.getElementById("weight").value = "";
+  document.getElementById("weight").value = suggestWeight();
 }
 
 function deleteWorkout(index) {
@@ -67,6 +67,8 @@ function render() {
 
   document.getElementById("totalWeight").innerText =
     totalWeight + " kg lifted";
+
+  updateDashboard();
 }
 
 function renderChart() {
@@ -87,7 +89,7 @@ function renderChart() {
     data: {
       labels,
       datasets: [{
-        label: "Volume Progress",
+        label: "Progress",
         data,
         tension: 0.4
       }]
@@ -95,4 +97,60 @@ function renderChart() {
   });
 }
 
+/* 🔥 AI-like Features */
+
+function calculateStreak() {
+  if (workouts.length === 0) return 0;
+
+  const dates = [...new Set(workouts.map(w => w.date))];
+  dates.sort();
+
+  let streak = 1;
+
+  for (let i = dates.length - 1; i > 0; i--) {
+    const d1 = new Date(dates[i]);
+    const d2 = new Date(dates[i - 1]);
+
+    const diff = (d1 - d2) / (1000 * 60 * 60 * 24);
+
+    if (diff === 1) streak++;
+    else break;
+  }
+
+  return streak;
+}
+
+function calculateGoal() {
+  let total = 0;
+  workouts.forEach(w => total += w.reps * w.weight);
+  return Math.round(total * 1.1);
+}
+
+function generateTip() {
+  if (workouts.length < 3) return "Stay consistent 💪";
+
+  const last = workouts[workouts.length - 1];
+  const prev = workouts[workouts.length - 2];
+
+  if (last.weight > prev.weight) {
+    return "Great progress! Increase reps next 🚀";
+  } else {
+    return "Try adding 2.5kg next session 🔥";
+  }
+}
+
+function suggestWeight() {
+  if (workouts.length === 0) return 10;
+  const last = workouts[workouts.length - 1];
+  return Math.round(last.weight * 1.05);
+}
+
+function updateDashboard() {
+  document.getElementById("streak").innerText = calculateStreak();
+  document.getElementById("goal").innerText = calculateGoal();
+  document.getElementById("tip").innerText = generateTip();
+}
+
+/* INIT */
 render();
+document.getElementById("weight").value = suggestWeight();
