@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GymPro</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="app">
+  <h1>GymPro</h1>
+
+  <div class="tabs">
+    <button onclick="showTab('home')">Home</button>
+    <button onclick="showTab('add')">Add</button>
+    <button onclick="showTab('progress')">Progress</button>
+  </div>
+
+  <!-- HOME -->
+  <div id="home" class="tab active">
+    <div id="workouts"></div>
+  </div>
+
+  <!-- ADD -->
+  <div id="add" class="tab">
+    <div class="card">
+      <input id="exercise" placeholder="Exercise">
+      <input id="reps" type="number" placeholder="Reps">
+      <input id="weight" type="number" placeholder="Weight (kg)">
+      <button onclick="addWorkout()">Add Workout</button>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div id="progress" class="tab">
+    <div class="card">
+      <canvas id="chart"></canvas>
+    </div>
+  </div>
+
+  <div class="stats">
+    <p id="totalWorkouts"></p>
+    <p id="totalWeight"></p>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
