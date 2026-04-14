@@ -3,26 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>GymPro</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Chart -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="app">
   <h1>GymPro</h1>
 
-  <div class="tabs">
-    <button onclick="showTab('home')">Home</button>
-    <button onclick="showTab('add')">Add</button>
-    <button onclick="showTab('progress')">Progress</button>
+  <!-- Dashboard -->
+  <div id="dashboard" class="card">
+    <h3>🔥 Streak: <span id="streak">0</span> days</h3>
+    <h3>🎯 Goal: <span id="goal">0</span> kg</h3>
+    <h3>💡 Tip: <span id="tip">Start strong</span></h3>
   </div>
 
-  <!-- HOME -->
+  <!-- Tabs -->
   <div id="home" class="tab active">
     <div id="workouts"></div>
   </div>
 
-  <!-- ADD -->
   <div id="add" class="tab">
     <div class="card">
       <input id="exercise" placeholder="Exercise">
@@ -32,13 +38,20 @@
     </div>
   </div>
 
-  <!-- PROGRESS -->
   <div id="progress" class="tab">
     <div class="card">
       <canvas id="chart"></canvas>
     </div>
   </div>
 
+  <!-- Bottom Nav -->
+  <div class="nav">
+    <button onclick="showTab('home')">🏠</button>
+    <button onclick="showTab('add')">➕</button>
+    <button onclick="showTab('progress')">📊</button>
+  </div>
+
+  <!-- Stats -->
   <div class="stats">
     <p id="totalWorkouts"></p>
     <p id="totalWeight"></p>
